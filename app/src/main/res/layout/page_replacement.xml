@@ -15,7 +15,7 @@
     <com.gauravk.bubblenavigation.BubbleNavigationLinearView
         android:layout_width="match_parent"
         android:id="@+id/bubblenavigationbar"
-        android:layout_height="90dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white">

@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_bright"
-    tools:context=".Fragments.Home_PR" >
+    tools:context=".Fragments.Home_PR">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="false">
+
 
         <Spinner
             android:id="@+id/spinnerpr"
@@ -19,24 +21,25 @@
             android:background="@drawable/style_spinner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.104" />
+            app:layout_constraintVertical_bias="0.022" />
 
-
-        <Button
-            android:id="@+id/addbutton_pr"
-            android:layout_width="58dp"
-            android:layout_height="43dp"
-            android:background="@drawable/ic_baseline_add_24"
-            app:backgroundTint="@color/white"
+        <EditText
+            android:id="@+id/editTextPage"
+            android:layout_width="210dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Enter Pages"
+            android:inputType="number"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.883"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.273" />
+            app:layout_constraintEnd_toEndOf="@+id/editTextFrame"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextFrame"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFrame"
+            app:layout_constraintVertical_bias="0.029" />
 
         <EditText
             android:id="@+id/editTextFrame"
@@ -46,25 +49,99 @@
             android:hint="Enter No. of Frames"
             android:inputType="number"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.139"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.303" />
+            app:layout_constraintEnd_toEndOf="@+id/spinnerpr"
+            app:layout_constraintHorizontal_bias="0.105"
+            app:layout_constraintStart_toStartOf="@+id/spinnerpr"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerpr"
+            app:layout_constraintVertical_bias="0.066" />
 
-        <EditText
-            android:id="@+id/editTextPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Pages"
-            android:inputType="number"
+        <TextView
+            android:id="@+id/showPageFault"
+            android:layout_width="188dp"
+            android:layout_height="43dp"
+            android:clickable="false"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.139"
+            app:layout_constraintHorizontal_bias="0.031"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.431" />
+            app:layout_constraintTop_toBottomOf="@+id/showPage"
+            app:layout_constraintVertical_bias="0.965" />
+
+        <TextView
+            android:id="@+id/showPageHit"
+            android:layout_width="188dp"
+            android:layout_height="43dp"
+            android:clickable="false"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toEndOf="@+id/showPageFault"
+            app:layout_constraintTop_toBottomOf="@+id/goButton"
+            app:layout_constraintVertical_bias="0.95" />
+
+        <TextView
+            android:id="@+id/showPage"
+            android:layout_width="291dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="32dp"
+            android:clickable="false"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/editTextPage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextPage"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPage" />
+
+        <Button
+            android:id="@+id/goButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="GO!"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@color/first"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showPage"
+            app:layout_constraintVertical_bias="0.013" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="90dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="100dp"
+            android:text="Add"
+            android:textColor="#000000"
+            app:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toEndOf="@+id/editTextPage"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerpr" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:background="@drawable/ic_baseline_delete_24"
+            android:visibility="invisible"
+            app:backgroundTint="@color/four"
+            app:layout_constraintBottom_toTopOf="@+id/showPageHit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.851"
+            app:layout_constraintStart_toEndOf="@+id/showPage"
+            app:layout_constraintTop_toBottomOf="@+id/addButton"
+            app:layout_constraintVertical_bias="0.091" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

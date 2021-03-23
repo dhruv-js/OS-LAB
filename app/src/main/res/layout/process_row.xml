@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="33">
+
+    <EditText
+        android:id="@+id/pid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:background="@drawable/data_cell"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:text="p1"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/atime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:background="@drawable/data_cell"
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/btime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:background="@drawable/data_cell"
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:background="@drawable/data_cell"
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:gravity="center_horizontal" />
+</TableRow>
