@@ -216,7 +216,7 @@ public class ProcessScheduling extends AppCompatActivity {
                 try {
                     in.setPriority(Integer.parseInt(((EditText) row.findViewById(R.id.priority)).getText().toString()));
                 } catch (NumberFormatException e) {
-                    if (type == 3) {
+                     if (type == 3) {
                         row.findViewById(R.id.priority).requestFocus();
                         Toast.makeText(this, "Please enter an integer", Toast.LENGTH_LONG).show();
                         outputContainer.setVisibility(View.GONE);

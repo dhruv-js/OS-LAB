@@ -1,82 +1,102 @@
 package com.example.os_algo.Algorithm;
 
+import android.util.Log;
+
+import com.example.os_algo.model.PR_Input;
+import com.example.os_algo.model.PR_Output;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Optimal {
-    int mem_layout[][];
-    public int pageFaults(Integer[] pages, int total, int frame) {
-
-        int frames = 0, pointer = 0, hit = 0, fault = 0,strng_size;
-        boolean isFull = false;
+    public PR_Output getOptimal(PR_Input in)
+    {
+        int frame = in.getFrame(), pointer = 0, hit = 0, fault = 0,total = in.getPage().length;
         int buffer[];
-        int ref[];
+        PR_Output out = new PR_Output();
+        int[] reference=in.getPage();
         int mem_layout[][];
-        ref = new int[total];
+        Boolean isFull=false;
+        String[] checkF= new String[total];
+        int indexF=0;
         mem_layout = new int[total][frame];
         buffer = new int[frame];
         for(int j = 0; j < frame; j++)
             buffer[j] = -1;
-
-
-        for(int i = 0; i < total; i++) {
+        for(int i = 0; i < total; i++)
+        {
             int search = -1;
-            for (int j = 0; j < frame; j++) {
-                if (buffer[j] == ref[i]) {
+            for(int j = 0; j < frame; j++)
+            {
+                if(buffer[j] == reference[i])
+                {
                     search = j;
                     hit++;
+                    checkF[indexF]="Hit";
+                    indexF++;
+
                     break;
                 }
             }
-// code to update the stack checking its capacity
-            if (search == -1) {
-                if (isFull) {
+            if(search == -1)
+            {
+                if(isFull)
+                {
                     int index[] = new int[frame];
                     boolean index_flag[] = new boolean[frame];
-                    for (int j = i + 1; j < total; j++) {
-                        for (int k = 0; k < frame; k++) {
-                            if ((ref[j] == buffer[k]) && (index_flag[k] == false)) {
+                    for(int j = i + 1; j < total; j++)
+                    {
+                        for(int k = 0; k < frame; k++)
+                        {
+                            if((reference[j] == buffer[k]) && (index_flag[k] == false))
+                            {
                                 index[k] = j;
                                 index_flag[k] = true;
                                 break;
                             }
                         }
                     }
-
-//updating pointer to the correct memory location after checking capacity
-                    buffer[pointer] = ref[i];
-                    fault++;
-                    if (!isFull) {
-                        pointer++;
-                        if (pointer == frames) {
-                            pointer = 0;
-                            isFull = true;
+                    int max = index[0];
+                    pointer = 0;
+                    if(max == 0)
+                        max = 200;
+                    for(int j = 0; j < frame; j++)
+                    {
+                        if(index[j] == 0)
+                            index[j] = 200;
+                        if(index[j] > max)
+                        {
+                            max = index[j];
+                            pointer = j;
                         }
                     }
                 }
-                for (int j = 0; j < frame; j++)
-                    mem_layout[i][j] = buffer[j];
-            }
+                buffer[pointer] = reference[i];
+                fault++;
+                checkF[indexF]="Fault";
+                indexF++;
 
-// code to display the number strings
-           // for (int q = 0; q < frame; q++) {
-             //   for (int j = 0; j < total; j++)
-               //     System.out.printf("%3d ", mem_layout[j][q]);
-                //System.out.println();
-           // }
+                if(!isFull)
+                {
+                    pointer++;
+                    if(pointer == frame)
+                    {
+                        pointer = 0;
+                        isFull = true;
+                    }
+                }
+            }
+            for(int j = 0; j < frame; j++)
+                mem_layout[i][j] = buffer[j];
         }
 
-        return fault;
+        out.setCheckFault(checkF);
+        out.setFault(fault);
+        out.setResult(mem_layout);
+        return out;
     }
+
 }
-  //  public int[][] res()
-    //{
-
-      //  return mem_layout;
-   // }
-
-
-
-
-

@@ -27,6 +27,7 @@
             app:layout_constraintVertical_bias="0.008"
             app:navigationContentDescription="@string/app_name" />
 
+
         <TextView
             android:id="@+id/oslab"
             android:layout_width="188dp"
@@ -37,11 +38,10 @@
             android:textSize="52dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
+            app:layout_constraintHorizontal_bias="0.273"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.161" />
-
+            app:layout_constraintVertical_bias="0.16" />
 
         <LinearLayout
             android:id="@+id/linearLayout"

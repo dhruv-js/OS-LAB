@@ -1,8 +1,10 @@
 package com.example.os_algo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,17 +15,25 @@ import com.example.os_algo.Fragments.BarChart_PR;
 import com.example.os_algo.Fragments.Description_PR;
 import com.example.os_algo.Fragments.Home_PR;
 import com.example.os_algo.Fragments.LineChart_PR;
+import com.example.os_algo.model.PR_Input;
+import com.example.os_algo.model.PR_Output;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
-
+final
 public class PageReplacement extends AppCompatActivity {
+    public boolean comeagain=false;
     FragmentTransaction fragmentTransaction;
     BubbleNavigationLinearView bubbleNavigationLinearView;
+    public PR_Output out = new PR_Output();
+    public PR_Input in = new PR_Input();
+    public int algorithm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_replacement);
+
 
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -35,7 +45,7 @@ public class PageReplacement extends AppCompatActivity {
 
             bubbleNavigationLinearView=findViewById(R.id.bubblenavigationbar);
         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,new Description_PR());
+        fragmentTransaction.add(R.id.fragment_container,new Description_PR());
         fragmentTransaction.commit();
 
         bubbleNavigationLinearView.setNavigationChangeListener(new BubbleNavigationChangeListener() {
@@ -47,28 +57,26 @@ public class PageReplacement extends AppCompatActivity {
                 {
                     case 0:
                         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.fragment_container,new Description_PR());
+                        fragmentTransaction.add(R.id.fragment_container,new Description_PR());
                         fragmentTransaction.commit();
-
-
                         break;
 
                     case 1:
                         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.fragment_container,new Home_PR());
+                        fragmentTransaction.add(R.id.fragment_container,new Home_PR());
                         fragmentTransaction.commit();
                         break;
 
                     case 2:
                         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.fragment_container,new LineChart_PR());
+                        fragmentTransaction.add(R.id.fragment_container,new LineChart_PR());
                         fragmentTransaction.commit();
                         break;
 
                     case 3:
 
                         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.fragment_container,new BarChart_PR());
+                        fragmentTransaction.add(R.id.fragment_container,new BarChart_PR());
                         fragmentTransaction.commit();
                         break;
 

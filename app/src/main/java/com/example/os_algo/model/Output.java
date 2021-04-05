@@ -1,7 +1,7 @@
 package com.example.os_algo.model;
 
 public class Output {
-    private int turnAround;//Turn around time
+    private int turnAround;//Turn around tim    e
     private int waiting;//Waiting time
 
     //GETTERS AND SETTERS

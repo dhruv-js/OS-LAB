@@ -217,11 +217,12 @@
                     android:layout_height="30dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_cell_left"
+                    android:gravity="center_horizontal"
                     android:text="-"
                     android:textAlignment="center"
+                    android:textColor="#000000"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal" />
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add"
@@ -229,11 +230,12 @@
                     android:layout_height="30dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_cell_right"
+                    android:gravity="center_horizontal"
                     android:text="+"
                     android:textAlignment="center"
+                    android:textColor="#090909"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -413,10 +415,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_go"
-        android:text="Go"
         android:elevation="5dp"
+        android:text="Go"
+        android:textColor="#070707"
         android:textSize="18sp"
-        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -2,6 +2,9 @@ package com.example.os_algo.Algorithm;
 
 import android.util.Log;
 
+import com.example.os_algo.model.PR_Input;
+import com.example.os_algo.model.PR_Output;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -9,90 +12,52 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FIFO {
-Integer[][] result;
-    int[][] fresult;
-    public int pageFaults(Integer[] pages, int total, int frame)
+    public PR_Output getFIFO(PR_Input in)
     {
-        // To represent set of current pages. We use
-        // an unordered_set so that we quickly check
-        // if a page is present in set or not
+        int frame = in.getFrame(), pointer = 0, hit = 0, fault = 0,total = in.getPage().length;
+        int buffer[];
+        PR_Output out = new PR_Output();
+        int[] reference=in.getPage();
+        int mem_layout[][];
+        String[] checkF= new String[total];
+        int indexF=0;
+        mem_layout = new int[total][frame];
+        buffer = new int[frame];
+        for(int j = 0; j < frame; j++)
+            buffer[j] = -1;
 
-        HashSet<Integer> s = new HashSet<>(frame);
-        result = new Integer[pages.length][frame];
-        fresult = new int[pages.length][frame];
 
-        // To store the pages in FIFO manner
-        Queue<Integer> indexes = new LinkedList<>() ;
-        // Start from initial page
-        int page_faults = 0;
-        for (int i=0; i<total; i++)
+        for(int i = 0; i < total; i++)
         {
-            // Check if the set can hold more pages
-            if (s.size() < frame)
+            int search = -1;
+            for(int j = 0; j < frame; j++)
             {
-                // Insert it into set if not present
-                // already which represents page fault
-                if (!s.contains(pages[i]))
+                if(buffer[j] == reference[i])
                 {
-                    s.add(pages[i]);
-
-                    // increment page fault
-                    page_faults++;
-
-                    // Push the current page into the queue
-                    indexes.add(pages[i]);
-
+                    search = j;
+                    hit++;
+                    checkF[indexF]="Hit";
+                    indexF++;
+                    break;
                 }
             }
-
-            // If the set is full then need to perform FIFO
-            // i.e. remove the first page of the queue from
-            // set and queue both and insert the current page
-            else
+            if(search == -1)
             {
-                // Check if current page is not already
-                // present in the set
-                if (!s.contains(pages[i]))
-                {
-                    //Pop the first page from the queue
-                    int val = indexes.peek();
-
-                    indexes.poll();
-
-                    // Remove the indexes page
-                    s.remove(val);
-
-                    // insert the current page
-                    s.add(pages[i]);
-
-                    // push the current page into
-                    // the queue
-                    indexes.add(pages[i]);
-
-                    // Increment page faults
-                    page_faults++;
-                }
-
+                buffer[pointer] = reference[i];
+                fault++;
+                pointer++;
+                checkF[indexF]="Fault";
+                indexF++;
+                if(pointer == frame)
+                    pointer = 0;
             }
-           result[i] = s.toArray(result[i]);
-
-            for(int q=0;q<frame;q++)
-            {
-                for(int j=0;j<pages.length;j++)
-                {
-                  if(result[j][q]==null)
-                    result[j][q]=-1;
-                    fresult[j][q] = result[j][q].intValue();
-                }
-
-            }
-
+            for(int j = 0; j < frame; j++)
+                mem_layout[i][j] = buffer[j];
         }
-        return page_faults;
+        out.setCheckFault(checkF);
+        out.setFault(fault);
+        out.setResult(mem_layout);
+        return out;
     }
-public int[][] res()
-{
 
-return fresult;
-}
 }

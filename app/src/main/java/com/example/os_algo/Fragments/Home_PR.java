@@ -1,11 +1,18 @@
 package com.example.os_algo.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Path;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,10 +20,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +34,12 @@ import com.example.os_algo.Algorithm.FIFO;
 import com.example.os_algo.Algorithm.LIFO;
 import com.example.os_algo.Algorithm.LRU;
 import com.example.os_algo.Algorithm.Optimal;
+import com.example.os_algo.Algorithm.Random;
+import com.example.os_algo.PageReplacement;
 import com.example.os_algo.R;
+import com.example.os_algo.model.MyAdapter;
+import com.example.os_algo.model.PR_Input;
+import com.example.os_algo.model.PR_Output;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,8 +57,11 @@ int frame;
 Button clear;
 int index=0;
 int algo;
+RecyclerView recyclerView;
 TextView faults ;
 TextView hits ;
+String[] checkF;
+int[][] result;
 ArrayList<Integer> page = new ArrayList<>();
 
     @Override
@@ -52,7 +69,6 @@ ArrayList<Integer> page = new ArrayList<>();
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_home_p_r, container, false);
-
 
         spinner=view.findViewById(R.id.spinnerpr);
         add=view.findViewById(R.id.addButton);
@@ -63,7 +79,7 @@ ArrayList<Integer> page = new ArrayList<>();
         clear = view.findViewById(R.id.clear);
         faults = view.findViewById(R.id.showPageFault);
         hits = view.findViewById(R.id.showPageHit);
-
+        recyclerView = view.findViewById(R.id.prRecycleView);
         String[] value={"Select Algorithm","FIFO","LIFO","LRU","Optimal","Random"};
         ArrayList<String> arrayList=new ArrayList<>(Arrays.asList(value));
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(),R.layout.style_s,arrayList);
@@ -88,6 +104,9 @@ ArrayList<Integer> page = new ArrayList<>();
                     case 4:
                         algo=4;
                         break;
+                    case 5:
+                        algo=5;
+                        break;
                 }
             }
 
@@ -97,6 +116,11 @@ ArrayList<Integer> page = new ArrayList<>();
             }
         });
 
+        if(((PageReplacement) getActivity()).comeagain)
+        {
+            editTextPage.setText(((PageReplacement) getActivity()).in.getFrame()+"");
+            showPage.setText(Arrays.toString(((PageReplacement) getActivity()).in.getPage()));
+        }
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getActivity().getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -108,7 +132,8 @@ ArrayList<Integer> page = new ArrayList<>();
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        page.add(index, Integer.parseInt(editTextPage.getText().toString() ));
+                        if(editTextPage.getText().toString() !=null)
+                        {page.add(index, Integer.parseInt(editTextPage.getText().toString() ));
                         index++;
                         showPage.setVisibility(View.VISIBLE);
                         clear.setVisibility(View.VISIBLE);
@@ -116,6 +141,9 @@ ArrayList<Integer> page = new ArrayList<>();
                         showPage.setText(page.toString());
                         editTextPage.setText("");
                     }
+
+                    }
+
                 }
         );
 
@@ -132,22 +160,88 @@ ArrayList<Integer> page = new ArrayList<>();
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                frame = Integer.parseInt(editTextFrame.getText().toString());
-                Integer[] arr = new Integer[page.size()];
-                int[][] result;
-                int fault=0;
-                arr = page.toArray(arr);
-                if(algo == 0)
 
-                if (algo == 1)
-                {
-                    FIFO fifo = new FIFO();
-                    fault = fifo.pageFaults(arr, page.size(), frame);
-                   result = fifo.res();
-                    for (int i = 0; i < page.size(); i++)
-                    {       Log.v("Answer", Arrays.toString(result[i]) + "");
+                PR_Output output = null;
+                PR_Input input = new PR_Input();
+                if (algo == 0) {
+                    Toast.makeText(getContext(), "Choose an Algorithm!", Toast.LENGTH_SHORT).show();
+                } else {
+                    if(editTextFrame.getText()!=null)
+                    frame = Integer.parseInt(editTextFrame.getText().toString());
+                    Integer[] arr = new Integer[page.size()];
+                    int fault = 0;
+                    int[] pageArray = new int[page.size()];
+                    for (int i = 0; i < pageArray.length; i++) {
+                        pageArray[i] = page.get(i).intValue();
                     }
-                 }
+                    if(frame==0 || pageArray==null )
+                    {
+                        Toast.makeText(getContext(), "Enter valid values!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (algo == 1) {
+                        input.setFrame(frame);
+                        input.setPage(pageArray);
+                        FIFO fifo = new FIFO();
+                        output = fifo.getFIFO(input);
+                        fault = output.getFault();
+                        checkF = output.getCheckFault();
+                        result = output.getResult();
+
+                    }
+                    else if (algo == 2) {
+                        input.setFrame(frame);
+                        input.setPage(pageArray);
+                        LIFO lifo = new LIFO();
+                        output = lifo.getLIFO(input);
+                        fault = output.getFault();
+                        checkF = output.getCheckFault();
+                        result = output.getResult();
+
+                    }
+
+                    else if (algo == 3) {
+
+                        input.setFrame(frame);
+                        input.setPage(pageArray);
+                        LRU lru = new LRU();
+                        output = lru.getLRU(input);
+                        fault = output.getFault();
+                        checkF = output.getCheckFault();
+                        result = output.getResult();
+                    }
+                    else if (algo == 4) {
+
+                        input.setFrame(frame);
+                        input.setPage(pageArray);
+                        Optimal optimal = new Optimal();
+                        output = optimal.getOptimal(input);
+                        fault = output.getFault();
+                        checkF = output.getCheckFault();
+                        result = output.getResult();
+                    }
+                    else if (algo == 5) {
+
+                        input.setFrame(frame);
+                        input.setPage(pageArray);
+                        Random random = new Random();
+                        output = random.getRandom(input);
+                        fault = output.getFault();
+                        checkF = output.getCheckFault();
+                        result = output.getResult();
+                    }
+
+                    ((PageReplacement) getActivity()).out = output;
+                    ((PageReplacement) getActivity()).in = input;
+                    ((PageReplacement)getActivity()).algorithm = algo;
+                    ((PageReplacement) getActivity()).comeagain = true;
+
+
+
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
+                    recyclerView.setLayoutManager(layoutManager);
+
+                    MyAdapter adapter = new MyAdapter(view.getContext(), checkF, result);
+                    recyclerView.setAdapter(adapter);
 
 
                     int hit = page.size() - fault;
@@ -156,6 +250,7 @@ ArrayList<Integer> page = new ArrayList<>();
                     hits.setVisibility(View.VISIBLE);
                     hits.setText("Page Hit:" + hit);
 
+                }
             }
         });
         return view;

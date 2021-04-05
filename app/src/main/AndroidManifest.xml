@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OSAlgo">
-        <activity android:name=".DiskScheduling"></activity>
+        <activity android:name=".IntroductoryActivity"></activity>
+        <activity android:name=".DiskScheduling" />
         <activity android:name=".ConcurrencyDeadlock" />
         <activity android:name=".PageReplacement" />
+        <activity android:name=".ProcessScheduling"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
