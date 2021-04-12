@@ -26,7 +26,7 @@ public class PageReplacement extends AppCompatActivity {
     BubbleNavigationLinearView bubbleNavigationLinearView;
     public PR_Output out = new PR_Output();
     public PR_Input in = new PR_Input();
-    public int algorithm;
+    public int algorithm=0;
 
 
     @Override
@@ -40,7 +40,7 @@ public class PageReplacement extends AppCompatActivity {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.first));
+            window.setStatusBarColor(this.getResources().getColor(R.color.teal_200));
         }
 
             bubbleNavigationLinearView=findViewById(R.id.bubblenavigationbar);

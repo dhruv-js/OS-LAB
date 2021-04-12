@@ -13,6 +13,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.os_algo.Algorithm.FIFO;
+import com.example.os_algo.Algorithm.LIFO;
+import com.example.os_algo.Algorithm.LRU;
+import com.example.os_algo.Algorithm.Optimal;
+import com.example.os_algo.Algorithm.Random;
 import com.example.os_algo.PageReplacement;
 import com.example.os_algo.R;
 import com.example.os_algo.model.Input;
@@ -66,6 +70,86 @@ public class LineChart_PR extends Fragment {
 
 
         }
+        if(algorithm == 2)
+        {
+            LIFO lifo = new LIFO();
+            fault[0] = lifo.getLIFO(input).getFault();
+            input.setFrame(1);
+            fault[1] = lifo.getLIFO(input).getFault();
+            input.setFrame(2);
+            fault[2] = lifo.getLIFO(input).getFault();
+            input.setFrame(3);
+            fault[3] = lifo.getLIFO(input).getFault();
+            input.setFrame(4);
+            fault[4] = lifo.getLIFO(input).getFault();
+            input.setFrame(5);
+            fault[5] = lifo.getLIFO(input).getFault();
+            input.setFrame(6);
+            fault[6] = lifo.getLIFO(input).getFault();
+            input.setFrame(7);
+
+
+        }
+        if(algorithm == 3)
+        {
+            LRU lru = new LRU();
+            fault[0] = lru.getLRU(input).getFault();
+            input.setFrame(1);
+            fault[1] = lru.getLRU(input).getFault();
+            input.setFrame(2);
+            fault[2] = lru.getLRU(input).getFault();
+            input.setFrame(3);
+            fault[3] = lru.getLRU(input).getFault();
+            input.setFrame(4);
+            fault[4] = lru.getLRU(input).getFault();
+            input.setFrame(5);
+            fault[5] = lru.getLRU(input).getFault();
+            input.setFrame(6);
+            fault[6] = lru.getLRU(input).getFault();
+            input.setFrame(7);
+
+
+        }
+        if(algorithm == 4)
+        {
+            Optimal optimal = new Optimal();
+            fault[0] = optimal.getOptimal(input).getFault();
+            input.setFrame(1);
+            fault[1] = optimal.getOptimal(input).getFault();
+            input.setFrame(2);
+            fault[2] = optimal.getOptimal(input).getFault();
+            input.setFrame(3);
+            fault[3] = optimal.getOptimal(input).getFault();
+            input.setFrame(4);
+            fault[4] = optimal.getOptimal(input).getFault();
+            input.setFrame(5);
+            fault[5] = optimal.getOptimal(input).getFault();
+            input.setFrame(6);
+            fault[6] = optimal.getOptimal(input).getFault();
+            input.setFrame(7);
+
+
+        }
+        if(algorithm == 5)
+        {
+            Random random= new Random();
+            fault[0] = random.getRandom(input).getFault();
+            input.setFrame(1);
+            fault[1] = random.getRandom(input).getFault();
+            input.setFrame(2);
+            fault[2] = random.getRandom(input).getFault();
+            input.setFrame(3);
+            fault[3] = random.getRandom(input).getFault();
+            input.setFrame(4);
+            fault[4] = random.getRandom(input).getFault();
+            input.setFrame(5);
+            fault[5] = random.getRandom(input).getFault();
+            input.setFrame(6);
+            fault[6] = random.getRandom(input).getFault();
+            input.setFrame(7);
+
+
+        }
 
         List<Entry> lineEntries;
         lineEntries = new ArrayList<>();
@@ -79,7 +163,9 @@ public class LineChart_PR extends Fragment {
 
         LineDataSet lineDataSet = new LineDataSet(lineEntries, "");
         LineData lineData = new LineData(lineDataSet);
+        lineData.setValueTextSize(18f);
         lineChart.setData(lineData);
+
 
         lineDataSet.setColors(Color.BLACK);
         lineDataSet.setValueTextColor(Color.BLACK);

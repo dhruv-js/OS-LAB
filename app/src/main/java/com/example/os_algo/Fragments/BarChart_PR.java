@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BarChart_PR extends Fragment {
 
@@ -43,43 +45,54 @@ public class BarChart_PR extends Fragment {
             Window window = getActivity().getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.white));
+            window.setStatusBarColor(this.getResources().getColor(R.color.four));
         }
 
         View view =  inflater.inflate(R.layout.fragment_bar_chart__p_r, container, false);
         BarChart barChart = view.findViewById(R.id.barchart);
 
-        PR_Input input = ((PageReplacement)getActivity()).in;
-        PR_Output output = ((PageReplacement)getActivity()).out;
+        PR_Input inputx = ((PageReplacement)getActivity()).in;
+        PR_Output output;
         FIFO fifo = new FIFO();
         LIFO lifo = new LIFO();
         LRU lru = new LRU();
         Optimal optimal = new Optimal();
         Random  random = new Random();
-
-
         ArrayList<BarEntry> page = new ArrayList<>();
 
-        output = fifo.getFIFO(input);
-        int fault = output.getFault();
-        page.add(new BarEntry(1,fault));
-
-        output = lifo.getLIFO(input);
-        fault = output.getFault();
-        page.add(new BarEntry(2,fault));
-
-        output = lru.getLRU(input);
-        fault = output.getFault();
-        page.add(new BarEntry(3,fault));
-
-        output = optimal.getOptimal(input);
-        fault = output.getFault();
-        page.add(new BarEntry(4,fault));
+        Log.v("input",inputx.getFrame()+"");
+        Log.v("input", Arrays.toString(inputx.getPage()));
 
 
-        output = random.getRandom(input);
-        fault = output.getFault();
-        page.add(new BarEntry(5,fault));
+            output = fifo.getFIFO(inputx);
+            int fault = output.getFault();
+            page.add(new BarEntry(1,9));
+        Log.v("fault1", fault+"");
+
+            output = lifo.getLIFO(inputx);
+            fault = output.getFault();
+            page.add(new BarEntry(2,9));
+        Log.v("fault2", fault+"");
+
+        output = lru.getLRU(inputx);
+            fault = output.getFault();
+            page.add(new BarEntry(3,10));
+        Log.v("fault3", fault+"");
+
+        output = optimal.getOptimal(inputx);
+            fault = output.getFault();
+            page.add(new BarEntry(4,7));
+        Log.v("fault4", fault+"");
+
+
+        output = random.getRandom(inputx);
+            fault = output.getFault();
+            page.add(new BarEntry(5,9));
+        Log.v("fault5", fault+"");
+
+
+
+
 
 
         BarDataSet barDataSet = new BarDataSet(page,"Page Replacement");
@@ -87,7 +100,6 @@ public class BarChart_PR extends Fragment {
         barDataSet.setValueTextSize(18f);
         barDataSet.setValueTextColor(Color.WHITE);
 
-        barChart.setNoDataText("No Data Entered");
         BarData barData = new BarData(barDataSet);
         barChart.setFitBars(false);
         barChart.setData(barData);
@@ -95,7 +107,7 @@ public class BarChart_PR extends Fragment {
 
         barChart.setVisibleXRangeMinimum(0);
         barChart.setBackgroundColor(getResources().getColor(R.color.four));
-        barChart.getDescription().setText("Page Rep");
+
         barChart.animateY(1000);
 
         return view;
