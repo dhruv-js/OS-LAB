@@ -19,7 +19,6 @@ import com.example.os_algo.Algorithm.Optimal;
 import com.example.os_algo.Algorithm.Random;
 import com.example.os_algo.PageReplacement;
 import com.example.os_algo.R;
-import com.example.os_algo.model.Input;
 import com.example.os_algo.model.PR_Input;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarEntry;
@@ -48,106 +47,107 @@ public class LineChart_PR extends Fragment {
         LineChart lineChart = view.findViewById(R.id.linechart);
 
         int algorithm = ((PageReplacement)getActivity()).algorithm;
-        PR_Input input = ((PageReplacement)getActivity()).in;
+        PR_Input inputline = ((PageReplacement)getActivity()).in;
+        PR_Input temp = inputline;
         int[] fault = new int[7];
         if(algorithm == 1)
         {
             FIFO fifo = new FIFO();
-            fault[0] = fifo.getFIFO(input).getFault();
-            input.setFrame(1);
-            fault[1] = fifo.getFIFO(input).getFault();
-            input.setFrame(2);
-            fault[2] = fifo.getFIFO(input).getFault();
-            input.setFrame(3);
-            fault[3] = fifo.getFIFO(input).getFault();
-            input.setFrame(4);
-            fault[4] = fifo.getFIFO(input).getFault();
-            input.setFrame(5);
-            fault[5] = fifo.getFIFO(input).getFault();
-            input.setFrame(6);
-            fault[6] = fifo.getFIFO(input).getFault();
-            input.setFrame(7);
-
+            temp.setFrame(1);
+            fault[0] = fifo.getFIFO(temp).getFault();
+            temp.setFrame(2);
+            fault[1] = fifo.getFIFO(temp).getFault();
+            temp.setFrame(3);
+            fault[2] = fifo.getFIFO(temp).getFault();
+            temp.setFrame(4);
+            fault[3] = fifo.getFIFO(temp).getFault();
+            temp.setFrame(5);
+            fault[4] = fifo.getFIFO(temp).getFault();
+            temp.setFrame(6);
+            fault[5] = fifo.getFIFO(temp).getFault();
+            temp.setFrame(7);
+            fault[6] = fifo.getFIFO(temp).getFault();
+           
 
         }
         if(algorithm == 2)
         {
             LIFO lifo = new LIFO();
-            fault[0] = lifo.getLIFO(input).getFault();
-            input.setFrame(1);
-            fault[1] = lifo.getLIFO(input).getFault();
-            input.setFrame(2);
-            fault[2] = lifo.getLIFO(input).getFault();
-            input.setFrame(3);
-            fault[3] = lifo.getLIFO(input).getFault();
-            input.setFrame(4);
-            fault[4] = lifo.getLIFO(input).getFault();
-            input.setFrame(5);
-            fault[5] = lifo.getLIFO(input).getFault();
-            input.setFrame(6);
-            fault[6] = lifo.getLIFO(input).getFault();
-            input.setFrame(7);
-
+            inputline.setFrame(1);
+            fault[0] = lifo.getLIFO(inputline).getFault();
+            inputline.setFrame(2);
+            fault[1] = lifo.getLIFO(inputline).getFault();
+            inputline.setFrame(3);
+            fault[2] = lifo.getLIFO(inputline).getFault();
+            inputline.setFrame(4);
+            fault[3] = lifo.getLIFO(inputline).getFault();
+            inputline.setFrame(5);
+            fault[4] = lifo.getLIFO(inputline).getFault();
+            inputline.setFrame(6);
+            fault[5] = lifo.getLIFO(inputline).getFault();
+            inputline.setFrame(7);
+            fault[6] = lifo.getLIFO(inputline).getFault();
+            
 
         }
         if(algorithm == 3)
         {
             LRU lru = new LRU();
-            fault[0] = lru.getLRU(input).getFault();
-            input.setFrame(1);
-            fault[1] = lru.getLRU(input).getFault();
-            input.setFrame(2);
-            fault[2] = lru.getLRU(input).getFault();
-            input.setFrame(3);
-            fault[3] = lru.getLRU(input).getFault();
-            input.setFrame(4);
-            fault[4] = lru.getLRU(input).getFault();
-            input.setFrame(5);
-            fault[5] = lru.getLRU(input).getFault();
-            input.setFrame(6);
-            fault[6] = lru.getLRU(input).getFault();
-            input.setFrame(7);
-
+            inputline.setFrame(1);
+            fault[0] = lru.getLRU(inputline).getFault();
+            inputline.setFrame(2);
+            fault[1] = lru.getLRU(inputline).getFault();
+            inputline.setFrame(3);
+            fault[2] = lru.getLRU(inputline).getFault();
+            inputline.setFrame(4);
+            fault[3] = lru.getLRU(inputline).getFault();
+            inputline.setFrame(5);
+            fault[4] = lru.getLRU(inputline).getFault();
+            inputline.setFrame(6);
+            fault[5] = lru.getLRU(inputline).getFault();
+            inputline.setFrame(7);
+            fault[6] = lru.getLRU(inputline).getFault();
+            
 
         }
         if(algorithm == 4)
         {
             Optimal optimal = new Optimal();
-            fault[0] = optimal.getOptimal(input).getFault();
-            input.setFrame(1);
-            fault[1] = optimal.getOptimal(input).getFault();
-            input.setFrame(2);
-            fault[2] = optimal.getOptimal(input).getFault();
-            input.setFrame(3);
-            fault[3] = optimal.getOptimal(input).getFault();
-            input.setFrame(4);
-            fault[4] = optimal.getOptimal(input).getFault();
-            input.setFrame(5);
-            fault[5] = optimal.getOptimal(input).getFault();
-            input.setFrame(6);
-            fault[6] = optimal.getOptimal(input).getFault();
-            input.setFrame(7);
-
+            inputline.setFrame(1);
+            fault[0] = optimal.getOptimal(inputline).getFault();
+            inputline.setFrame(2);
+            fault[1] = optimal.getOptimal(inputline).getFault();
+            inputline.setFrame(3);
+            fault[2] = optimal.getOptimal(inputline).getFault();
+            inputline.setFrame(4);
+            fault[3] = optimal.getOptimal(inputline).getFault();
+            inputline.setFrame(5);
+            fault[4] = optimal.getOptimal(inputline).getFault();
+            inputline.setFrame(6);
+            fault[5] = optimal.getOptimal(inputline).getFault();
+            inputline.setFrame(7);
+            fault[6] = optimal.getOptimal(inputline).getFault();
+           
 
         }
         if(algorithm == 5)
         {
             Random random= new Random();
-            fault[0] = random.getRandom(input).getFault();
-            input.setFrame(1);
-            fault[1] = random.getRandom(input).getFault();
-            input.setFrame(2);
-            fault[2] = random.getRandom(input).getFault();
-            input.setFrame(3);
-            fault[3] = random.getRandom(input).getFault();
-            input.setFrame(4);
-            fault[4] = random.getRandom(input).getFault();
-            input.setFrame(5);
-            fault[5] = random.getRandom(input).getFault();
-            input.setFrame(6);
-            fault[6] = random.getRandom(input).getFault();
-            input.setFrame(7);
-
+            inputline.setFrame(1);
+            fault[0] = random.getRandom(inputline).getFault();
+            inputline.setFrame(2);
+            fault[1] = random.getRandom(inputline).getFault();
+            inputline.setFrame(3);
+            fault[2] = random.getRandom(inputline).getFault();
+            inputline.setFrame(4);
+            fault[3] = random.getRandom(inputline).getFault();
+            inputline.setFrame(5);
+            fault[4] = random.getRandom(inputline).getFault();
+            inputline.setFrame(6);
+            fault[5] = random.getRandom(inputline).getFault();
+            inputline.setFrame(7);
+            fault[6] = random.getRandom(inputline).getFault();
+            
 
         }
 

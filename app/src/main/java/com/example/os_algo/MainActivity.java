@@ -7,7 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,6 +25,7 @@ Toolbar toolbar;
 NavigationView navigationView;
 DrawerLayout drawerLayout;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +36,15 @@ DrawerLayout drawerLayout;
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.transparent));
+            window.setStatusBarColor(this.getResources().getColor(R.color.black));
         }
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(R.color.teal_200);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -95,6 +100,11 @@ DrawerLayout drawerLayout;
                     Intent intent3 = new Intent(MainActivity.this, ConcurrencyDeadlock.class);
                     startActivity(intent3);
                     break;
+                case R.id.nav_process:
+                    Intent intent4 = new Intent(MainActivity.this, ProcessScheduling.class);
+                    startActivity(intent4);
+                    break;
+
 
 
             }

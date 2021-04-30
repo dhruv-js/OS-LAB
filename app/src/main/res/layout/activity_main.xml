@@ -23,7 +23,7 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar"
-            android:background="#682828"
+            android:background="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +70,8 @@
                         android:text="Process Scheduling"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="#FFFFFF"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

@@ -19,6 +19,8 @@ import com.example.os_algo.model.PR_Input;
 import com.example.os_algo.model.PR_Output;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+import com.github.mikephil.charting.charts.LineChart;
+
 final
 public class PageReplacement extends AppCompatActivity {
     public boolean comeagain=false;
@@ -69,14 +71,14 @@ public class PageReplacement extends AppCompatActivity {
 
                     case 2:
                         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.add(R.id.fragment_container,new LineChart_PR());
+                        fragmentTransaction.add(R.id.fragment_container,new BarChart_PR());
                         fragmentTransaction.commit();
                         break;
 
                     case 3:
 
                         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.add(R.id.fragment_container,new BarChart_PR());
+                        fragmentTransaction.add(R.id.fragment_container,new LineChart_PR());
                         fragmentTransaction.commit();
                         break;
 

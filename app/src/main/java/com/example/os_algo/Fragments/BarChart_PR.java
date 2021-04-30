@@ -30,6 +30,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -65,45 +66,35 @@ public class BarChart_PR extends Fragment {
 
 
             output = fifo.getFIFO(inputx);
-            int fault = output.getFault();
-            page.add(new BarEntry(1,9));
-        Log.v("fault1", fault+"");
+            page.add(new BarEntry(1,output.getFault()));
 
             output = lifo.getLIFO(inputx);
-            fault = output.getFault();
-            page.add(new BarEntry(2,9));
-        Log.v("fault2", fault+"");
+            page.add(new BarEntry(2,output.getFault()));
 
         output = lru.getLRU(inputx);
-            fault = output.getFault();
-            page.add(new BarEntry(3,10));
-        Log.v("fault3", fault+"");
+            page.add(new BarEntry(3,output.getFault()));
 
         output = optimal.getOptimal(inputx);
-            fault = output.getFault();
-            page.add(new BarEntry(4,7));
-        Log.v("fault4", fault+"");
+            page.add(new BarEntry(4,output.getFault()));
 
 
         output = random.getRandom(inputx);
-            fault = output.getFault();
-            page.add(new BarEntry(5,9));
-        Log.v("fault5", fault+"");
-
-
-
+            page.add(new BarEntry(5,output.getFault()));
 
 
 
         BarDataSet barDataSet = new BarDataSet(page,"Page Replacement");
         barDataSet.setColors(Color.WHITE);
         barDataSet.setValueTextSize(18f);
+        
         barDataSet.setValueTextColor(Color.WHITE);
 
         BarData barData = new BarData(barDataSet);
         barChart.setFitBars(false);
         barChart.setData(barData);
-
+        String[] labels = {"FIFO","FIFO","LIFO","LRU","Optimal","Random"};
+        barChart.getXAxis().setGranularity(1f);
+barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labels));
 
         barChart.setVisibleXRangeMinimum(0);
         barChart.setBackgroundColor(getResources().getColor(R.color.four));

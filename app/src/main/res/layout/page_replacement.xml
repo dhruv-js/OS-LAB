@@ -15,7 +15,7 @@
     <com.gauravk.bubblenavigation.BubbleNavigationLinearView
         android:layout_width="match_parent"
         android:id="@+id/bubblenavigationbar"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white">
@@ -43,16 +43,6 @@
             app:bt_title="Home" />
 
         <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/belady"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bt_active="true"
-            app:bt_colorActive="@android:color/holo_orange_light"
-            app:bt_colorInactive="@android:color/black"
-            app:bt_icon="@drawable/line_chart"
-            app:bt_title="Belady" />
-
-        <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/compare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,5 +53,14 @@
             app:bt_icon="@drawable/bar_chart"
             app:bt_title="Compare" />
 
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/belady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@android:color/holo_orange_light"
+            app:bt_colorInactive="@android:color/black"
+            app:bt_icon="@drawable/line_chart"
+            app:bt_title="Belady" />
     </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
 </RelativeLayout>

@@ -118,8 +118,15 @@ ArrayList<Integer> page = new ArrayList<>();
 
         if(((PageReplacement) getActivity()).comeagain)
         {
-            editTextPage.setText(((PageReplacement) getActivity()).in.getFrame()+"");
+
             showPage.setText(Arrays.toString(((PageReplacement) getActivity()).in.getPage()));
+            for (int i=0;i<((PageReplacement)getActivity()).in.getPage().length;i++) {
+                page.add(index,((PageReplacement)getActivity()).in.getPage()[index] );
+                index++;
+            }
+            clear.setVisibility(View.VISIBLE);
+            clear.setClickable(true);
+
         }
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getActivity().getWindow();
