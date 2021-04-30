@@ -214,7 +214,7 @@
                 <Button
                     android:id="@+id/remove"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_cell_left"
                     android:gravity="center_horizontal"
@@ -227,7 +227,7 @@
                 <Button
                     android:id="@+id/add"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_cell_right"
                     android:gravity="center_horizontal"

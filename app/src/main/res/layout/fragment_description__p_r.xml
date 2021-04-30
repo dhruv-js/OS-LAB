@@ -20,7 +20,7 @@
         android:id="@+id/desc">
 
         <TextView
-            android:id="@+id/prhead"
+            android:id="@+id/pr_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo"
@@ -30,7 +30,7 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/prdef"
+            android:id="@+id/pr_definition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
@@ -40,7 +40,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/prdef2"
+            android:id="@+id/prdesc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
@@ -51,8 +51,8 @@
 
 
         <TextView
-            android:id="@+id/prdef3"
-            android:layout_width="375dp"
+            android:id="@+id/prdesc2"
+            android:layout_width="337dp"
             android:layout_height="44dp"
             android:layout_marginLeft="40dp"
             android:fontFamily="sans-serif-condensed-medium"
@@ -63,8 +63,8 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/prdef4"
-            android:layout_width="372dp"
+            android:id="@+id/prdesc3"
+            android:layout_width="341dp"
             android:layout_height="76dp"
             android:layout_marginLeft="40dp"
             android:fontFamily="sans-serif-condensed-medium"
@@ -76,7 +76,7 @@
 
 
         <TextView
-            android:id="@+id/prdef5"
+            android:id="@+id/prdesc4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
@@ -85,7 +85,7 @@
             android:textColor="#222237"
             android:textSize="18sp" />
         <TextView
-            android:id="@+id/prdef6"
+            android:id="@+id/prdesc5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
@@ -94,7 +94,7 @@
             android:textColor="#222237"
             android:textSize="18sp" />
         <TextView
-            android:id="@+id/prdef7"
+            android:id="@+id/prdesc6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -103,9 +103,59 @@
             android:text="1. FIFO Algorithm"
             android:textColor="#222237"
             android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="• This is the simplest page replacement algorithm."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="• This is the simplest page replacement algorithm."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	As the name suggests, this algorithm works on the principle of “First in First out“."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	It replaces the oldest page that has been present in the main memory for the longest time."
+            android:textColor="#222237"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/prdef8"
+            android:id="@+id/prdesc11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	It is implemented by keeping track of all the pages in a queue."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -114,8 +164,43 @@
             android:text="2. LIFO Algorithm"
             android:textColor="#222237"
             android:textSize="18sp" />
+
         <TextView
-            android:id="@+id/prdef9"
+            android:id="@+id/prdesc13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	As the name suggests, this algorithm works on the principle of “Last in First out“."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	It replaces the newest page that arrived at last in the main memory."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	It is implemented by keeping track of all the pages in a stack."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/prdesc16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -124,8 +209,40 @@
             android:text="3. LRU Algorithm"
             android:textColor="#222237"
             android:textSize="18sp" />
+
         <TextView
-            android:id="@+id/prdef10"
+            android:id="@+id/prdesc17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	As the name suggests, this algorithm works on the principle of “Least Recently Used“."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	It replaces the page that has not been referred by the CPU for the longest time."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	This algorithm is just opposite to the optimal page replacement algorithm. In this, we look at the past instead of staring at future."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -136,7 +253,61 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/prdef11"
+            android:id="@+id/prdesc21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	This algorithm replaces the page that will not be referred by the CPU in future for the longest time."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	It is practically impossible to implement this algorithm."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	This is because the pages that will not be used in future for the longest time can not be predicted."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	However, it is the best known algorithm and gives the least number of page faults."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	Hence, it is used as a performance measure criterion for other algorithms."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prdesc26"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -145,6 +316,30 @@
             android:text="5. Random Algorithm"
             android:textColor="#222237"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	As the name suggests, this algorithm randomly replaces any page."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/prdesc28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:text="•	So, this algorithm may behave like any other algorithm like FIFO, LIFO, LRU, Optimal etc."
+            android:textColor="#222237"
+            android:textSize="18sp" />
+
+
     </LinearLayout>
 
 

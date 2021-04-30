@@ -139,15 +139,25 @@ ArrayList<Integer> page = new ArrayList<>();
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(editTextPage.getText().toString() !=null)
-                        {page.add(index, Integer.parseInt(editTextPage.getText().toString() ));
-                        index++;
-                        showPage.setVisibility(View.VISIBLE);
-                        clear.setVisibility(View.VISIBLE);
-                        clear.setClickable(true);
-                        showPage.setText(page.toString());
-                        editTextPage.setText("");
+                        String tempframe= editTextFrame.getText().toString();
+                       int temppage=-1;
+                        if(editTextPage.getText().toString()!="")
+                        temppage = Integer.parseInt(editTextPage.getText().toString());
+
+                        if(temppage ==-1 || tempframe =="")
+                        {
+                            Toast.makeText(getContext(), "Add a valid page and frame", Toast.LENGTH_SHORT).show();
                     }
+                        else
+                        {
+                            page.add(index,temppage);
+                            index++;
+                            showPage.setVisibility(View.VISIBLE);
+                            clear.setVisibility(View.VISIBLE);
+                            clear.setClickable(true);
+                            showPage.setText(page.toString());
+                            editTextPage.setText("");
+                        }
 
                     }
 
